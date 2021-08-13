@@ -1,5 +1,8 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -15,26 +18,9 @@ public class JpaMain {
         tx.begin();
 
         try {
-//            Member member1 = new Member();
-//            member1.setName("A");
-//
-//            Member member2 = new Member();
-//            member2.setName("A");
-//
-//            Member member3 = new Member();
-//            member3.setName("A");
-//
-//            System.out.println("======================");
-//
-//            em.persist(member1);
-//            em.persist(member2);
-//            em.persist(member3);
-//
-//            System.out.println("member1 = " + member1.getId());
-//            System.out.println("member2 = " + member2.getId());
-//            System.out.println("member3 = " + member3.getId());
-//
-//            System.out.println("======================");
+
+            Order order = new Order();
+            order.addOrderItem(new OrderItem());
 
             tx.commit();
         } catch (Exception e) {

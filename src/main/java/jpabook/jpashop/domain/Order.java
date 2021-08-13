@@ -21,7 +21,7 @@ public class Order {
     private Member member;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItemList = new ArrayList<>();
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     public Member getMember() {
         return member;
@@ -60,4 +60,11 @@ public class Order {
     }
 
 
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    // 양방향을 위한 메소드 생성
+    // 메인에서 주문할 경우에 무한 순환구조를 나오게 하기 위해
 }
