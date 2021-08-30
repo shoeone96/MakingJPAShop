@@ -20,8 +20,17 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
+
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
+    private LocalDateTime orderDate;
 
     public Member getMember() {
         return member;
@@ -30,11 +39,6 @@ public class Order {
     public void setMember(Member member) {
         this.member = member;
     }
-
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
-
-    private LocalDateTime orderDate;
 
     public Long getId() {
         return id;
