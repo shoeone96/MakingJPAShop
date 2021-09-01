@@ -20,11 +20,11 @@ public class Order extends BaseEntity{
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // order만 persist 해도 자동 영속화 됨
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // order만 persist 해도 자동 영속화 됨
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
