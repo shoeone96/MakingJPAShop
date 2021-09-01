@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 
@@ -19,13 +20,11 @@ public class JpaMain {
 
         try {
 
-            Order order = new Order();
-            em.persist(order);
+           Book book = new Book();
+           book.setName("Jpa");
+           book.setAuthor("김영한");
 
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-
-            em.persist(orderItem);
+           em.persist(book);
 
             // 양방향 관계로 각각 엔티티에도 메소드를 만들고 순환 루프를 만들지 않고 단방향으로 해결하는 과정
             // 하나를 저장하고 그것으로 다른 하나를 저장하고 하는 방식(간단하고 생각해야 할 내용이 적어짐)
